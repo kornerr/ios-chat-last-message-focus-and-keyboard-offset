@@ -16,6 +16,8 @@
 		9FDC05A21FCC1CF400682487 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC059E1FCC1CF300682487 /* TextItemView.swift */; };
 		9FDC05A41FCC1CF400682487 /* TextItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC05A01FCC1CF400682487 /* TextItemView.xib */; };
 		9FDC05A61FCC1EAB00682487 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05A51FCC1EAB00682487 /* Item.swift */; };
+		9FDC05A91FCC226F00682487 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05A71FCC226F00682487 /* ChatViewController.swift */; };
+		9FDC05AA1FCC226F00682487 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC05A81FCC226F00682487 /* ChatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		9FDC059E1FCC1CF300682487 /* TextItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
 		9FDC05A01FCC1CF400682487 /* TextItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextItemView.xib; sourceTree = "<group>"; };
 		9FDC05A51FCC1EAB00682487 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9FDC05A71FCC226F00682487 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		9FDC05A81FCC226F00682487 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				9FABF6501FCC1006000C80A7 /* AppDelegate.swift */,
-				9FABF6521FCC1006000C80A7 /* MenuViewController.swift */,
+				9FDC05A81FCC226F00682487 /* ChatViewController.xib */,
+				9FDC05A71FCC226F00682487 /* ChatViewController.swift */,
 				9FABF6541FCC1006000C80A7 /* Main.storyboard */,
+				9FABF6521FCC1006000C80A7 /* MenuViewController.swift */,
 				9FDC059D1FCC1CF300682487 /* TextItem.swift */,
 				9FDC05A51FCC1EAB00682487 /* Item.swift */,
 				9FDC059E1FCC1CF300682487 /* TextItemView.swift */,
@@ -138,6 +144,7 @@
 				9FDC05A41FCC1CF400682487 /* TextItemView.xib in Resources */,
 				9FABF65B1FCC1006000C80A7 /* LaunchScreen.storyboard in Resources */,
 				9FABF6581FCC1006000C80A7 /* Assets.xcassets in Resources */,
+				9FDC05AA1FCC226F00682487 /* ChatViewController.xib in Resources */,
 				9FABF6561FCC1006000C80A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +160,7 @@
 				9FDC05A21FCC1CF400682487 /* TextItemView.swift in Sources */,
 				9FABF6531FCC1006000C80A7 /* MenuViewController.swift in Sources */,
 				9FDC05A11FCC1CF400682487 /* TextItem.swift in Sources */,
+				9FDC05A91FCC226F00682487 /* ChatViewController.swift in Sources */,
 				9FABF6511FCC1006000C80A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

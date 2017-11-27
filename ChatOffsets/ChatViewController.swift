@@ -1,9 +1,8 @@
 
 import UIKit
 
-class MenuViewController:
+class ChatViewController:
     UIViewController,
-    UITableViewDelegate,
     UITableViewDataSource
 {
 
@@ -19,13 +18,13 @@ class MenuViewController:
     @IBOutlet private var tableView: UITableView!
 
     private func setupTableView() {
-        self.tableView.delegate = self
         self.tableView.dataSource = self
 
         self.tableView.register(
             UITableViewCell.self,
             forCellReuseIdentifier: "Default" 
         )
+        // TODO Use custom cells
     }
 
     func tableView(
@@ -45,15 +44,6 @@ class MenuViewController:
                 for: indexPath)
         cell.textLabel?.text = "cell № \(indexPath.row)"
         return cell
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
-        // Display chat VC.
-        let chatVC = ChatViewController()
-        self.show(chatVC, sender: self)
     }
 
 }
