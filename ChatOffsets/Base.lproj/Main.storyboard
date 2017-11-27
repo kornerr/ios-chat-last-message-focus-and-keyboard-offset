@@ -32,7 +32,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aAs-j9-lfN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="J10-1l-Plp"/>
+                    <navigationItem key="navigationItem" title="Menu" id="J10-1l-Plp"/>
                     <connections>
                         <outlet property="tableView" destination="bFp-Zl-Xc5" id="NYu-xs-Fr5"/>
                     </connections>

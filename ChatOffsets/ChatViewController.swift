@@ -10,6 +10,7 @@ class ChatViewController:
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Chat"
         self.setupTableView()
     }
 
