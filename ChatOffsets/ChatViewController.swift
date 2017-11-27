@@ -17,22 +17,32 @@ class ChatViewController:
     // MARK: - TABLE VIEW
     
     @IBOutlet private var tableView: UITableView!
+    private let items = [
+        "This is a simple and short line of text",
+        "Let us try to have more length with these funny symbols we call letters and words and... sentences!",
+        "Time for quotes",
+        "Beauty is the highest degree of feasibility, the degree of matching and harmonic combination " +
+        "of contradictory elements in any device, any thing, any body... Each beautiful line, form, " +
+        "combination is a feasible solution, developed by nature over millions of years of natural " +
+        "selection, or found by man in his quest for the beauty of things, i.e. for the correctness of the things. " +
+        "Beauty is itself a general pattern that levels the chaos, beauty is the great middle the appropriate versatility... " +
+        "-- I. Efremov"
+    ]
 
     private func setupTableView() {
         self.tableView.dataSource = self
 
         self.tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: "Default" 
+            TextItemType.self,
+            forCellReuseIdentifier: TextItemId
         )
-        // TODO Use custom cells
     }
 
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
-        return 10
+        return self.items.count
     }
 
     func tableView(
@@ -41,9 +51,25 @@ class ChatViewController:
     ) -> UITableViewCell {
         let cell =
             self.tableView.dequeueReusableCell(
-                withIdentifier: "Default",
+                withIdentifier: TextItemId,
                 for: indexPath)
-        cell.textLabel?.text = "cell № \(indexPath.row)"
+            as! TextItemType
+        cell.itemView.text = self.items[indexPath.row]
+        return cell
+    }
+
+    // MARK: - TEXT ITEM
+
+    private let TextItemId = "TextItem"
+    private typealias TextItemType = TableViewCellTemplate<TextItemView>
+
+    private func cellTextItem(at indexPath: IndexPath) -> TextItemType {
+        let cell =
+            self.tableView.dequeueReusableCell(
+                withIdentifier: TextItemId,
+                for: indexPath
+            )
+            as! TextItemType
         return cell
     }
 
