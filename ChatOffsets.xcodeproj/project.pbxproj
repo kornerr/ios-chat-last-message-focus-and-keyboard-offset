@@ -12,6 +12,10 @@
 		9FABF6561FCC1006000C80A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FABF6541FCC1006000C80A7 /* Main.storyboard */; };
 		9FABF6581FCC1006000C80A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FABF6571FCC1006000C80A7 /* Assets.xcassets */; };
 		9FABF65B1FCC1006000C80A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FABF6591FCC1006000C80A7 /* LaunchScreen.storyboard */; };
+		9FDC05A11FCC1CF400682487 /* TextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC059D1FCC1CF300682487 /* TextItem.swift */; };
+		9FDC05A21FCC1CF400682487 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC059E1FCC1CF300682487 /* TextItemView.swift */; };
+		9FDC05A41FCC1CF400682487 /* TextItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC05A01FCC1CF400682487 /* TextItemView.xib */; };
+		9FDC05A61FCC1EAB00682487 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05A51FCC1EAB00682487 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		9FABF6571FCC1006000C80A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FABF65A1FCC1006000C80A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FABF65C1FCC1006000C80A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FDC059D1FCC1CF300682487 /* TextItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextItem.swift; sourceTree = "<group>"; };
+		9FDC059E1FCC1CF300682487 /* TextItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
+		9FDC05A01FCC1CF400682487 /* TextItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextItemView.xib; sourceTree = "<group>"; };
+		9FDC05A51FCC1EAB00682487 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,10 @@
 				9FABF6501FCC1006000C80A7 /* AppDelegate.swift */,
 				9FABF6521FCC1006000C80A7 /* MenuViewController.swift */,
 				9FABF6541FCC1006000C80A7 /* Main.storyboard */,
+				9FDC059D1FCC1CF300682487 /* TextItem.swift */,
+				9FDC05A51FCC1EAB00682487 /* Item.swift */,
+				9FDC059E1FCC1CF300682487 /* TextItemView.swift */,
+				9FDC05A01FCC1CF400682487 /* TextItemView.xib */,
 				9FABF6571FCC1006000C80A7 /* Assets.xcassets */,
 				9FABF6591FCC1006000C80A7 /* LaunchScreen.storyboard */,
 				9FABF65C1FCC1006000C80A7 /* Info.plist */,
@@ -123,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FDC05A41FCC1CF400682487 /* TextItemView.xib in Resources */,
 				9FABF65B1FCC1006000C80A7 /* LaunchScreen.storyboard in Resources */,
 				9FABF6581FCC1006000C80A7 /* Assets.xcassets in Resources */,
 				9FABF6561FCC1006000C80A7 /* Main.storyboard in Resources */,
@@ -136,7 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FDC05A61FCC1EAB00682487 /* Item.swift in Sources */,
+				9FDC05A21FCC1CF400682487 /* TextItemView.swift in Sources */,
 				9FABF6531FCC1006000C80A7 /* MenuViewController.swift in Sources */,
+				9FDC05A11FCC1CF400682487 /* TextItem.swift in Sources */,
 				9FABF6511FCC1006000C80A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

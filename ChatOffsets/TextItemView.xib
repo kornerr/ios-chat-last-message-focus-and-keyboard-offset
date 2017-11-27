@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TextItemView" customModule="ChatOffsets" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hw1-qg-Urv">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NS-OP-Tnj">
+                            <rect key="frame" x="50" y="14" width="230" height="86"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwG-qh-BC9">
+                                    <rect key="frame" x="14" y="10" width="202" height="66"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="RwG-qh-BC9" firstAttribute="leading" secondItem="9NS-OP-Tnj" secondAttribute="leading" constant="14" id="2HY-aM-h6c"/>
+                                <constraint firstAttribute="trailing" secondItem="RwG-qh-BC9" secondAttribute="trailing" constant="14" id="FOj-ko-upl"/>
+                                <constraint firstItem="RwG-qh-BC9" firstAttribute="top" secondItem="9NS-OP-Tnj" secondAttribute="top" constant="10" id="TL0-sy-Qq0"/>
+                                <constraint firstAttribute="bottom" secondItem="RwG-qh-BC9" secondAttribute="bottom" constant="10" id="tno-bV-bfz"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="SyZ-n8-pxF">
+                            <rect key="frame" x="12" y="14" width="32" height="32"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="SyZ-n8-pxF" secondAttribute="height" multiplier="1:1" id="Swi-yL-8bD"/>
+                                <constraint firstAttribute="height" constant="32" id="iaO-Rg-es8"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="9NS-OP-Tnj" firstAttribute="leading" secondItem="Hw1-qg-Urv" secondAttribute="leading" constant="50" id="08I-jw-j3f"/>
+                        <constraint firstItem="SyZ-n8-pxF" firstAttribute="top" secondItem="Hw1-qg-Urv" secondAttribute="top" constant="14" id="0uE-M6-wB5"/>
+                        <constraint firstItem="9NS-OP-Tnj" firstAttribute="top" secondItem="Hw1-qg-Urv" secondAttribute="top" constant="14" id="31u-aq-hv9"/>
+                        <constraint firstAttribute="trailing" secondItem="9NS-OP-Tnj" secondAttribute="trailing" constant="40" id="4hr-dX-00o"/>
+                        <constraint firstAttribute="bottom" secondItem="9NS-OP-Tnj" secondAttribute="bottom" id="NXy-Yb-rFD"/>
+                        <constraint firstItem="9NS-OP-Tnj" firstAttribute="leading" secondItem="SyZ-n8-pxF" secondAttribute="trailing" constant="6" id="dfb-aP-ukY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Hw1-qg-Urv" secondAttribute="trailing" id="1KA-mg-hAT"/>
+                <constraint firstAttribute="bottom" secondItem="Hw1-qg-Urv" secondAttribute="bottom" id="Ahb-4o-EjT"/>
+                <constraint firstItem="Hw1-qg-Urv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fxq-Id-Prj"/>
+                <constraint firstItem="Hw1-qg-Urv" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="j4g-Tr-CS5"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="messageBubbleView" destination="9NS-OP-Tnj" id="T25-5B-gyO"/>
+                <outlet property="messageTextLabel" destination="RwG-qh-BC9" id="RuF-1j-Jjy"/>
+            </connections>
+            <point key="canvasLocation" x="-36" y="75"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="User" width="140" height="140"/>
+    </resources>
+</document>
