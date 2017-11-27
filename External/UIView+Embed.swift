@@ -34,6 +34,7 @@ public extension UIView {
 
     func embedView(_ other: UIView) {
         self.addSubview(other)
+        other.translatesAutoresizingMaskIntoConstraints = false
         other.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         other.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0).isActive = true
         other.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true

@@ -1,8 +1,11 @@
 
 import UIKit
 
+private let LOG_TAG = "ChatViewController"
+
 class ChatViewController:
     UIViewController,
+    UITableViewDelegate,
     UITableViewDataSource
 {
 
@@ -12,6 +15,14 @@ class ChatViewController:
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
         self.setupTableView()
+        NSLog("\(LOG_TAG) finish viewDidLoad")
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // The first reloadData() call happens after laying out subviews.
+        // So this is the best place to scroll to bottom.
+        self.scrollToBottom()
     }
 
     // MARK: - TABLE VIEW
@@ -26,11 +37,19 @@ class ChatViewController:
         "combination is a feasible solution, developed by nature over millions of years of natural " +
         "selection, or found by man in his quest for the beauty of things, i.e. for the correctness of the things. " +
         "Beauty is itself a general pattern that levels the chaos, beauty is the great middle the appropriate versatility... " +
-        "-- I. Efremov"
+        "-- I. Efremov",
+        "We still need more lines to make this sample look closer to reality",
+        "It is a good excercise to create isolated applications that depict solutions to specific problems, I think",
+        "So automatic dimensions thing works fine, doesn't it? Why didn't it work then for me last time?",
     ]
 
     private func setupTableView() {
+        self.tableView.delegate = self
         self.tableView.dataSource = self
+
+#if USE_DYNAMIC_CELL_HEIGHT
+        self.setupTableViewCellHeight()
+#endif // USE_DYNAMIC_CELL_HEIGHT
 
         self.tableView.register(
             TextItemType.self,
@@ -49,14 +68,52 @@ class ChatViewController:
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell =
-            self.tableView.dequeueReusableCell(
-                withIdentifier: TextItemId,
-                for: indexPath)
-            as! TextItemType
-        cell.itemView.text = self.items[indexPath.row]
-        return cell
+        return self.cellTextItem(at: indexPath)
     }
+
+    /*
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        return self.cellTextItemHeight(for: indexPath)
+    }
+    */
+
+#if USE_DYNAMIC_CELL_HEIGHT
+    // MARK: - TABLE VIEW DYNAMIC CELL HEIGHT
+    // Cell height caching: https://stackoverflow.com/a/33397350/3404710
+    
+    private var cachedCellHeights = [IndexPath : CGFloat]()
+
+    func setupTableViewCellHeight() {
+        // Make cells self-sizing.
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        estimatedHeightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        // Retrieve cell height if it has been visible at least once.
+        if let height = self.cachedCellHeights[indexPath] {
+            return height
+        }
+        // The first display uses automatic calculation.
+        else {
+            return UITableViewAutomaticDimension
+        }
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        willDisplay cell: UITableViewCell,
+        forRowAt indexPath: IndexPath
+    ) {
+        // Cache cell height.
+        self.cachedCellHeights[indexPath] = cell.frame.size.height
+    }
+#endif // USE_DYNAMIC_CELL_HEIGHT
 
     // MARK: - TEXT ITEM
 
@@ -64,13 +121,27 @@ class ChatViewController:
     private typealias TextItemType = TableViewCellTemplate<TextItemView>
 
     private func cellTextItem(at indexPath: IndexPath) -> TextItemType {
+        NSLog("\(LOG_TAG) cellTextItem at '\(indexPath)'")
         let cell =
             self.tableView.dequeueReusableCell(
                 withIdentifier: TextItemId,
                 for: indexPath
             )
             as! TextItemType
+        cell.itemView.text = self.items[indexPath.row]
         return cell
+    }
+
+    private func cellTextItemHeight(for indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+
+    // MARK: - SCROLLING TO BOTTOM
+
+    private func scrollToBottom() {
+        NSLog("\(LOG_TAG) scroll to bottom")
+        let lastRow = IndexPath(row: self.items.count - 1, section: 0)
+        self.tableView.scrollToRow(at: lastRow, at: .top, animated: true)
     }
 
 }

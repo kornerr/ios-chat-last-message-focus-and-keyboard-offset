@@ -7,7 +7,17 @@ class TextItemView : UIView {
   
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setupAvatar()
         self.setupText()
+    }
+
+    // MARK: - AVATAR
+    
+    @IBOutlet private var avatarImageView: UIImageView!
+    
+    private func setupAvatar() {
+        // Round avatar.
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.height / 2
     }
 
     // MARK: - PROPERTY TEXT

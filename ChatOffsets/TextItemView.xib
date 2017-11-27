@@ -66,6 +66,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="avatarImageView" destination="SyZ-n8-pxF" id="tUj-P8-PEM"/>
                 <outlet property="messageBubbleView" destination="9NS-OP-Tnj" id="T25-5B-gyO"/>
                 <outlet property="messageTextLabel" destination="RwG-qh-BC9" id="RuF-1j-Jjy"/>
             </connections>
