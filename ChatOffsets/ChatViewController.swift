@@ -47,12 +47,16 @@ class ChatViewController:
                 "Beauty is itself a general pattern that levels the chaos, beauty is the great middle the appropriate versatility... " +
                 "-- I. Efremov"
             ),
+            ImageItem(image: UIImage(named: "User")!),
             TextItem(
                 text: "We still need more lines to make this sample look closer to reality"
             ),
+            ImageItem(image: UIImage(named: "User")!),
             TextItem(
                 text: "It is a good excercise to create isolated applications that depict solutions to specific problems, I think"
             ),
+            ImageItem(image: UIImage(named: "User")!),
+            ImageItem(image: UIImage(named: "User")!),
             TextItem(
                 text: "So automatic dimensions thing works fine, doesn't it? Why didn't it work then for me last time?"
             )
@@ -75,6 +79,10 @@ class ChatViewController:
             TextItemType.self,
             forCellReuseIdentifier: TextItemId
         )
+        self.tableView.register(
+            ImageItemType.self,
+            forCellReuseIdentifier: ImageItemId
+        )
     }
 
     func tableView(
@@ -88,17 +96,12 @@ class ChatViewController:
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        return self.cellTextItem(at: indexPath)
+        let item = self.items[indexPath.row]
+        if (item is TextItem) {
+            return self.cellTextItem(at: indexPath)
+        }
+        return self.cellImageItem(at: indexPath)
     }
-
-    /*
-    func tableView(
-        _ tableView: UITableView,
-        heightForRowAt indexPath: IndexPath
-    ) -> CGFloat {
-        return self.cellTextItemHeight(for: indexPath)
-    }
-    */
 
 #if USE_DYNAMIC_CELL_HEIGHT
     // MARK: - TABLE VIEW DYNAMIC CELL HEIGHT
@@ -153,8 +156,22 @@ class ChatViewController:
         return cell
     }
 
-    private func cellTextItemHeight(for indexPath: IndexPath) -> CGFloat {
-        return 200
+    // MARK: - IMAGE ITEM
+
+    private let ImageItemId = "ImageItem"
+    private typealias ImageItemType = TableViewCellTemplate<ImageItemView>
+
+    private func cellImageItem(at indexPath: IndexPath) -> ImageItemType {
+        NSLog("\(LOG_TAG) cellImageItem at '\(indexPath)'")
+        let cell =
+            self.tableView.dequeueReusableCell(
+                withIdentifier: ImageItemId,
+                for: indexPath
+            )
+            as! ImageItemType
+        let item = self.items[indexPath.row] as! ImageItem
+        cell.itemView.image = item.image
+        return cell
     }
 
     // MARK: - SCROLLING TO BOTTOM

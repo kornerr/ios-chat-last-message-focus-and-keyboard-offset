@@ -14,8 +14,7 @@ class ImageItemView : UIView {
     @IBOutlet private var avatarImageView: UIImageView!
 
     private func setupAvatar() {
-        // TODO round image
-        //self.customerAvatarImageView.setupAvatarTheme()
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.height / 2
     }
 
     // MARK: - PROPERTY IMAGE
@@ -34,9 +33,8 @@ class ImageItemView : UIView {
     @IBOutlet private var messageImageView: UIImageView!
 
     private func setupImage() {
-        // Bubble round corners.
+        // Round corners.
         self.messageBubbleView.layer.cornerRadius = 14
-        //self.messageBubbleView.clipsToBounds = true
     }
 
     private func updateImage() {

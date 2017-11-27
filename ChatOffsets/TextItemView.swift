@@ -36,9 +36,8 @@ class TextItemView : UIView {
     @IBOutlet private var messageTextLabel: UILabel!
 
     private func setupText() {
-        // Bubble round corners.
+        // Round corners.
         self.messageBubbleView.layer.cornerRadius = 14
-        self.messageBubbleView.clipsToBounds = true
     }
 
     private func updateText() {
