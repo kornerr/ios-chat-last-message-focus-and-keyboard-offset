@@ -14,8 +14,8 @@ class ChatViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
+        self.setupItems()
         self.setupTableView()
-        NSLog("\(LOG_TAG) finish viewDidLoad")
     }
 
     override func viewDidLayoutSubviews() {
@@ -25,23 +25,43 @@ class ChatViewController:
         self.scrollToBottom()
     }
 
-    // MARK: - TABLE VIEW
+    // MARK: - ITEMS
     
+    private var items = [Item]()
+    
+    private func setupItems() {
+
+        self.items = [
+            TextItem(
+                text: "This is a simple and short line of text"
+            ),
+            TextItem(
+                text: "Let us try to have more length with these funny symbols we call letters and words and... sentences!"
+            ),
+            TextItem(text: "Time for quotes"),
+            TextItem(text:
+                "Beauty is the highest degree of feasibility, the degree of matching and harmonic combination " +
+                "of contradictory elements in any device, any thing, any body... Each beautiful line, form, " +
+                "combination is a feasible solution, developed by nature over millions of years of natural " +
+                "selection, or found by man in his quest for the beauty of things, i.e. for the correctness of the things. " +
+                "Beauty is itself a general pattern that levels the chaos, beauty is the great middle the appropriate versatility... " +
+                "-- I. Efremov"
+            ),
+            TextItem(
+                text: "We still need more lines to make this sample look closer to reality"
+            ),
+            TextItem(
+                text: "It is a good excercise to create isolated applications that depict solutions to specific problems, I think"
+            ),
+            TextItem(
+                text: "So automatic dimensions thing works fine, doesn't it? Why didn't it work then for me last time?"
+            )
+        ]
+    }
+
+    // MARK: - TABLE VIEW
+
     @IBOutlet private var tableView: UITableView!
-    private let items = [
-        "This is a simple and short line of text",
-        "Let us try to have more length with these funny symbols we call letters and words and... sentences!",
-        "Time for quotes",
-        "Beauty is the highest degree of feasibility, the degree of matching and harmonic combination " +
-        "of contradictory elements in any device, any thing, any body... Each beautiful line, form, " +
-        "combination is a feasible solution, developed by nature over millions of years of natural " +
-        "selection, or found by man in his quest for the beauty of things, i.e. for the correctness of the things. " +
-        "Beauty is itself a general pattern that levels the chaos, beauty is the great middle the appropriate versatility... " +
-        "-- I. Efremov",
-        "We still need more lines to make this sample look closer to reality",
-        "It is a good excercise to create isolated applications that depict solutions to specific problems, I think",
-        "So automatic dimensions thing works fine, doesn't it? Why didn't it work then for me last time?",
-    ]
 
     private func setupTableView() {
         self.tableView.delegate = self
@@ -128,7 +148,8 @@ class ChatViewController:
                 for: indexPath
             )
             as! TextItemType
-        cell.itemView.text = self.items[indexPath.row]
+        let item = self.items[indexPath.row] as! TextItem
+        cell.itemView.text = item.text
         return cell
     }
 
