@@ -16,13 +16,14 @@ class ChatViewController:
         self.navigationItem.title = "Chat"
         self.setupItems()
         self.setupTableView()
+        self.addItemAfterDelay()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // The first reloadData() call happens after laying out subviews.
-        // So this is the best place to scroll to bottom.
-        self.scrollToBottom()
+        // So this is a perfect place to scroll to bottom.
+        self.scrollToBottom(animated: true)
     }
 
     // MARK: - ITEMS
@@ -71,9 +72,7 @@ class ChatViewController:
         self.tableView.delegate = self
         self.tableView.dataSource = self
 
-#if USE_DYNAMIC_CELL_HEIGHT
         self.setupTableViewCellHeight()
-#endif // USE_DYNAMIC_CELL_HEIGHT
 
         self.tableView.register(
             TextItemType.self,
@@ -103,7 +102,6 @@ class ChatViewController:
         return self.cellImageItem(at: indexPath)
     }
 
-#if USE_DYNAMIC_CELL_HEIGHT
     // MARK: - TABLE VIEW DYNAMIC CELL HEIGHT
     // Cell height caching: https://stackoverflow.com/a/33397350/3404710
     
@@ -136,7 +134,6 @@ class ChatViewController:
         // Cache cell height.
         self.cachedCellHeights[indexPath] = cell.frame.size.height
     }
-#endif // USE_DYNAMIC_CELL_HEIGHT
 
     // MARK: - TEXT ITEM
 
@@ -176,10 +173,23 @@ class ChatViewController:
 
     // MARK: - SCROLLING TO BOTTOM
 
-    private func scrollToBottom() {
+    private func scrollToBottom(animated: Bool) {
         NSLog("\(LOG_TAG) scroll to bottom")
         let lastRow = IndexPath(row: self.items.count - 1, section: 0)
-        self.tableView.scrollToRow(at: lastRow, at: .top, animated: true)
+        self.tableView.scrollToRow(at: lastRow, at: .top, animated: animated)
+    }
+
+    private func addItemAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            NSLog("\(LOG_TAG) adding item after delay")
+            self.items.append(
+                TextItem(
+                    text: "Here's another line to see if scrolling to bottom still works"
+                )
+            )
+            self.tableView.reloadData()
+            self.scrollToBottom(animated: true)
+        }
     }
 
 }
