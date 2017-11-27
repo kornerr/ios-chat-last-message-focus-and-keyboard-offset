@@ -36,6 +36,9 @@ class ChatViewController:
         // The first reloadData() call happens after laying out subviews.
         // So this is a perfect place to scroll to bottom.
         self.scrollToBottom(animated: true)
+
+        // Only configure keyboard scrolling after laying out.
+        self.setupKeyboardScrolling()
     }
 
     // MARK: - ITEMS
@@ -214,6 +217,18 @@ class ChatViewController:
         get { return self.sendView! }
     }
 
+    // MARK: - KEYBOARD SCROLLING
+
+    private var scrollInsetter: ScrollInsetter!
+
+    private func setupKeyboardScrolling() {
+        if (self.scrollInsetter == nil) {
+            self.scrollInsetter = ScrollInsetter(scrollView: self.tableView)
+            self.scrollInsetter.scrolled = { [unowned self] in
+                self.scrollToBottom(animated: true)
+            }
+        }
+    }
 
 }
 
