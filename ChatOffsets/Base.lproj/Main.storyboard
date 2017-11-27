@@ -48,7 +48,21 @@
                     <view key="view" contentMode="scaleToFill" id="I3F-M3-7KK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Switch to the next tab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LC-cm-hC6">
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9LC-cm-hC6" firstAttribute="leading" secondItem="Zjj-vN-5yS" secondAttribute="leading" id="d1b-D3-Opl"/>
+                            <constraint firstItem="9LC-cm-hC6" firstAttribute="top" secondItem="Zjj-vN-5yS" secondAttribute="top" id="djl-wy-HOQ"/>
+                            <constraint firstItem="Zjj-vN-5yS" firstAttribute="bottom" secondItem="9LC-cm-hC6" secondAttribute="bottom" id="hVO-um-BO6"/>
+                            <constraint firstItem="Zjj-vN-5yS" firstAttribute="trailing" secondItem="9LC-cm-hC6" secondAttribute="trailing" id="pqd-rd-B13"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Zjj-vN-5yS"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="1kj-sH-sjh"/>

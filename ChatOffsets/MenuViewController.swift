@@ -43,7 +43,7 @@ class MenuViewController:
             self.tableView.dequeueReusableCell(
                 withIdentifier: "Default",
                 for: indexPath)
-        cell.textLabel?.text = "cell № \(indexPath.row)"
+        cell.textLabel?.text = "select me № \(indexPath.row)"
         return cell
     }
 
