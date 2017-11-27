@@ -12,6 +12,7 @@ class MenuViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        self.setupSendView()
     }
 
     // MARK: - TABLE VIEW
@@ -53,7 +54,16 @@ class MenuViewController:
     ) {
         // Display chat VC.
         let chatVC = ChatViewController()
+        chatVC.sendView = self.sendView
         self.show(chatVC, sender: self)
+    }
+
+    // MARK: - SEND VIEW FOR CHAT
+
+    private var sendView: SendView!
+
+    private func setupSendView() {
+        self.sendView = UIView.loadFromNib()
     }
 
 }

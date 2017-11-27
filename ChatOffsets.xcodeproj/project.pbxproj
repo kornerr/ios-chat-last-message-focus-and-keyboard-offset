@@ -24,6 +24,8 @@
 		9FDC05B51FCC4F0300682487 /* ImageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05B21FCC4F0200682487 /* ImageItemView.swift */; };
 		9FDC05B61FCC4F0300682487 /* ImageItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC05B31FCC4F0300682487 /* ImageItemView.xib */; };
 		9FDC05B71FCC4F0300682487 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05B41FCC4F0300682487 /* ImageItem.swift */; };
+		9FDC05BA1FCC618600682487 /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC05B81FCC618600682487 /* SendView.xib */; };
+		9FDC05BD1FCC623E00682487 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05BC1FCC623D00682487 /* SendView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		9FDC05B21FCC4F0200682487 /* ImageItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageItemView.swift; sourceTree = "<group>"; };
 		9FDC05B31FCC4F0300682487 /* ImageItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageItemView.xib; sourceTree = "<group>"; };
 		9FDC05B41FCC4F0300682487 /* ImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
+		9FDC05B81FCC618600682487 /* SendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendView.xib; sourceTree = "<group>"; };
+		9FDC05BC1FCC623D00682487 /* SendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 				9FDC059D1FCC1CF300682487 /* TextItem.swift */,
 				9FDC059E1FCC1CF300682487 /* TextItemView.swift */,
 				9FDC05A01FCC1CF400682487 /* TextItemView.xib */,
+				9FDC05BC1FCC623D00682487 /* SendView.swift */,
+				9FDC05B81FCC618600682487 /* SendView.xib */,
 				9FABF6571FCC1006000C80A7 /* Assets.xcassets */,
 				9FABF6591FCC1006000C80A7 /* LaunchScreen.storyboard */,
 				9FABF65C1FCC1006000C80A7 /* Info.plist */,
@@ -167,6 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FDC05BA1FCC618600682487 /* SendView.xib in Resources */,
 				9FDC05A41FCC1CF400682487 /* TextItemView.xib in Resources */,
 				9FABF65B1FCC1006000C80A7 /* LaunchScreen.storyboard in Resources */,
 				9FABF6581FCC1006000C80A7 /* Assets.xcassets in Resources */,
@@ -185,6 +192,7 @@
 			files = (
 				9FDC05A61FCC1EAB00682487 /* Item.swift in Sources */,
 				9FDC05B11FCC28B400682487 /* TableViewCellTemplate.swift in Sources */,
+				9FDC05BD1FCC623E00682487 /* SendView.swift in Sources */,
 				9FDC05AF1FCC28B400682487 /* UIView+NibFile.swift in Sources */,
 				9FDC05A21FCC1CF400682487 /* TextItemView.swift in Sources */,
 				9FABF6531FCC1006000C80A7 /* MenuViewController.swift in Sources */,

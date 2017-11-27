@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SendView" customModule="ChatOffsets" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="47"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gge-Up-aqE">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kT3-6u-xJH"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8PH-3N-Rc9">
+                    <rect key="frame" x="0.0" y="1" width="300" height="46"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type a message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JSz-2H-rpx">
+                            <rect key="frame" x="8" y="0.0" width="284" height="46"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="JSz-2H-rpx" secondAttribute="trailing" constant="8" id="8Tp-mH-teH"/>
+                        <constraint firstAttribute="height" constant="46" id="S0o-N3-aYD"/>
+                        <constraint firstItem="JSz-2H-rpx" firstAttribute="leading" secondItem="8PH-3N-Rc9" secondAttribute="leading" constant="8" id="ZIb-nK-58X"/>
+                        <constraint firstAttribute="bottom" secondItem="JSz-2H-rpx" secondAttribute="bottom" id="rkw-H6-7Te"/>
+                        <constraint firstItem="JSz-2H-rpx" firstAttribute="top" secondItem="8PH-3N-Rc9" secondAttribute="top" id="vox-g2-jdT"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="8PH-3N-Rc9" firstAttribute="top" secondItem="gge-Up-aqE" secondAttribute="bottom" id="EU9-Fv-8m6"/>
+                <constraint firstItem="8PH-3N-Rc9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S1H-3E-wBK"/>
+                <constraint firstItem="gge-Up-aqE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WOS-AJ-QRW"/>
+                <constraint firstAttribute="trailing" secondItem="gge-Up-aqE" secondAttribute="trailing" id="c2F-64-YwE"/>
+                <constraint firstAttribute="trailing" secondItem="8PH-3N-Rc9" secondAttribute="trailing" id="ntx-Ev-jIQ"/>
+                <constraint firstAttribute="bottom" secondItem="8PH-3N-Rc9" secondAttribute="bottom" id="pvh-Bd-gRv"/>
+                <constraint firstItem="gge-Up-aqE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r6Y-op-6vd"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="24" y="169"/>
+        </view>
+    </objects>
+</document>

@@ -10,6 +10,18 @@ class ChatViewController:
 {
 
     // MARK: - SETUP
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide tab bar.
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Show tab bar.
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -191,6 +203,17 @@ class ChatViewController:
             self.scrollToBottom(animated: true)
         }
     }
+
+    // MARK: - SEND VIEW
+
+    weak var sendView: SendView?
+
+    override var canBecomeFirstResponder: Bool { return self.sendView != nil }
+
+    override var inputAccessoryView: UIView {
+        get { return self.sendView! }
+    }
+
 
 }
 
