@@ -189,7 +189,7 @@ class ChatViewController:
     }
 
     private func addItemAfterDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             NSLog("\(LOG_TAG) adding item after delay")
             self.items.append(
                 TextItem(
@@ -197,7 +197,7 @@ class ChatViewController:
                 )
             )
             self.tableView.reloadData()
-            self.scrollToBottom(animated: true)
+            self.scrollToBottom(animated: false)
         }
     }
 
@@ -223,6 +223,12 @@ class ChatViewController:
             if let view = self.sendView {
                 var inset = self.tableView.contentInset
                 inset.bottom = view.frame.size.height
+
+                // Compensate for iOS11+ adjusted bottom inset.
+                if #available(iOS 11, *) {
+                    inset.bottom -= self.tableView.adjustedContentInset.bottom
+                }
+
                 self.tableView.contentInset = inset
             }
 
