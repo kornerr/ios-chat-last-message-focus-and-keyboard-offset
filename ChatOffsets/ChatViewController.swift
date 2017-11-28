@@ -14,19 +14,18 @@ class ChatViewController:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide tab bar.
-        //self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Show tab bar.
-        //self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let constraints = self.sendView!.constraints//.filter { $0.firstAttribute == .height }
-        NSLog("\(LOG_TAG) viewDidAppear. constraints: '\(constraints)'")
+        self.scrollToBottom(animated: true)
     }
     
     override func viewDidLoad() {
@@ -35,16 +34,6 @@ class ChatViewController:
         self.setupItems()
         self.setupTableView()
         self.addItemAfterDelay()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // The first reloadData() call happens after laying out subviews.
-        // So this is a perfect place to scroll to bottom.
-        self.scrollToBottom(animated: true)
-
-        // Only configure keyboard scrolling after laying out.
-        //self.setupKeyboardScrolling()
     }
 
     // MARK: - ITEMS
@@ -162,7 +151,6 @@ class ChatViewController:
     private typealias TextItemType = TableViewCellTemplate<TextItemView>
 
     private func cellTextItem(at indexPath: IndexPath) -> TextItemType {
-        NSLog("\(LOG_TAG) cellTextItem at '\(indexPath)'")
         let cell =
             self.tableView.dequeueReusableCell(
                 withIdentifier: TextItemId,
@@ -180,7 +168,6 @@ class ChatViewController:
     private typealias ImageItemType = TableViewCellTemplate<ImageItemView>
 
     private func cellImageItem(at indexPath: IndexPath) -> ImageItemType {
-        NSLog("\(LOG_TAG) cellImageItem at '\(indexPath)'")
         let cell =
             self.tableView.dequeueReusableCell(
                 withIdentifier: ImageItemId,
@@ -215,25 +202,12 @@ class ChatViewController:
 
     // MARK: - SEND VIEW
 
-    weak var sendView: SendView?
+    var sendView: UIView?
 
     override var canBecomeFirstResponder: Bool { return self.sendView != nil }
 
     override var inputAccessoryView: UIView {
-        get { 
-        
-            // Find current height anchor.
-            let constraints = self.sendView!.constraints//.filter { $0.firstAttribute == .height }
-            NSLog("\(LOG_TAG) constraints: '\(constraints)'")
-            /*
-            if let constraint = constraints.first {
-                constraint.constant = height
-                NSLog("\(LOG_TAG) set height to tab bar")
-            }
-            */
-
-            return self.sendView!
-        }
+        get { return self.sendView! }
     }
 
     // MARK: - KEYBOARD SCROLLING

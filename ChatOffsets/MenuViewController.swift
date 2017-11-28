@@ -54,10 +54,16 @@ class MenuViewController:
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        // Display chat VC.
+        // Display chat.
         let chatVC = ChatViewController()
-        chatVC.sendView = self.sendView
         self.show(chatVC, sender: self)
+
+        // Setup chat send (input) view.
+        // Make its height twice the tab bar's one.
+        let height = self.tabBarController!.tabBar.frame.size.height
+        let view = UIView(frame: CGRect(x:0, y: 0, width: 0, height: height * 2))
+        view.embeddedView = self.sendView
+        chatVC.sendView = view
     }
 
     // MARK: - SEND VIEW FOR CHAT
@@ -66,21 +72,6 @@ class MenuViewController:
 
     private func setupSendView() {
         self.sendView = UIView.loadFromNib()
-        self.sendView.autoresizingMask = .flexibleHeight
-        //self.sendView.translatesAutoresizingMaskIntoConstraints = false
-        // Set its height to tab bar height.
-        if let height = self.tabBarController?.tabBar.frame.size.height {
-            //self.sendView.heightAnchor.constraint(equalToConstant: height).isActive = true
-            /*
-            // Find current height anchor.
-            let constraints = self.sendView.constraints.filter { $0.firstAttribute == .height }
-            NSLog("\(LOG_TAG) constraints: '\(constraints)'")
-            if let constraint = constraints.first {
-                constraint.constant = height
-                NSLog("\(LOG_TAG) set height to tab bar")
-            }
-            */
-        }
     }
 
 }
