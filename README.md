@@ -21,12 +21,12 @@ Here's preview of the application running on:
 
 # Details
 
-Here's a short hierarchy overview for what is what when we see a chat window:
+Here's a simplified hierarchy of most important parts of Chat VC:
 
 * UITabBarController
     * UINavigationController
         * UIViewController
-            * UITableViewController
+            * UITableView
             * UIView, input view, VC's first responder
 
 The application makes heavy use of the following classes/components present in External directory:
