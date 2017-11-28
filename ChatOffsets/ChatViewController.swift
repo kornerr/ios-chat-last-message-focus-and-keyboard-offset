@@ -38,7 +38,7 @@ class ChatViewController:
         self.scrollToBottom(animated: true)
 
         // Only configure keyboard scrolling after laying out.
-        self.setupKeyboardScrolling()
+        //self.setupKeyboardScrolling()
     }
 
     // MARK: - ITEMS
