@@ -26,6 +26,7 @@ class ChatViewController:
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.scrollToBottom(animated: true)
+        self.setupKeyboardScrolling()
     }
     
     override func viewDidLoad() {
@@ -216,6 +217,15 @@ class ChatViewController:
 
     private func setupKeyboardScrolling() {
         if (self.scrollInsetter == nil) {
+            NSLog("\(LOG_TAG) setupKeyboardScrolling")
+
+            // Set table view bottom inset to the height of send view.
+            if let view = self.sendView {
+                var inset = self.tableView.contentInset
+                inset.bottom = view.frame.size.height
+                self.tableView.contentInset = inset
+            }
+
             self.scrollInsetter = ScrollInsetter(scrollView: self.tableView)
             self.scrollInsetter.scrolled = { [unowned self] in
                 self.scrollToBottom(animated: true)
