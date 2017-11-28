@@ -3,9 +3,8 @@
 
 This is a sample iOS application with the following features:
 
-* display chat window
-* upon entering chat window, scroll to the last message
-* upon receiving new message, scroll to it
+* scroll to the last message upon entering chat window
+* scroll to the last message upon receiving new message
 * lift messages when keyboard is visible
 * work with iOS11 "famous" adjusted content inset
 
