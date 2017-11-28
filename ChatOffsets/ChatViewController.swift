@@ -25,8 +25,12 @@ class ChatViewController:
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.scrollToBottom(animated: true)
+
         self.setupKeyboardScrolling()
+        // Reload data and scroll to bottom.
+        // This fixes remaining offset issues.
+        self.tableView.reloadData()
+        self.scrollToBottom(animated: false)
     }
     
     override func viewDidLoad() {
@@ -197,7 +201,7 @@ class ChatViewController:
                 )
             )
             self.tableView.reloadData()
-            self.scrollToBottom(animated: false)
+            self.scrollToBottom(animated: true)
         }
     }
 
