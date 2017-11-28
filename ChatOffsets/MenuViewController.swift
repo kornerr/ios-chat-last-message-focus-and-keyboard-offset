@@ -1,6 +1,8 @@
 
 import UIKit
 
+private let LOG_TAG = "MenuViewController"
+
 class MenuViewController:
     UIViewController,
     UITableViewDelegate,
@@ -64,6 +66,21 @@ class MenuViewController:
 
     private func setupSendView() {
         self.sendView = UIView.loadFromNib()
+        self.sendView.autoresizingMask = .flexibleHeight
+        //self.sendView.translatesAutoresizingMaskIntoConstraints = false
+        // Set its height to tab bar height.
+        if let height = self.tabBarController?.tabBar.frame.size.height {
+            //self.sendView.heightAnchor.constraint(equalToConstant: height).isActive = true
+            /*
+            // Find current height anchor.
+            let constraints = self.sendView.constraints.filter { $0.firstAttribute == .height }
+            NSLog("\(LOG_TAG) constraints: '\(constraints)'")
+            if let constraint = constraints.first {
+                constraint.constant = height
+                NSLog("\(LOG_TAG) set height to tab bar")
+            }
+            */
+        }
     }
 
 }

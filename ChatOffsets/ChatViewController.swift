@@ -14,13 +14,19 @@ class ChatViewController:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Hide tab bar.
-        self.tabBarController?.tabBar.isHidden = true
+        //self.tabBarController?.tabBar.isHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Show tab bar.
-        self.tabBarController?.tabBar.isHidden = false
+        //self.tabBarController?.tabBar.isHidden = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let constraints = self.sendView!.constraints//.filter { $0.firstAttribute == .height }
+        NSLog("\(LOG_TAG) viewDidAppear. constraints: '\(constraints)'")
     }
     
     override func viewDidLoad() {
@@ -214,7 +220,20 @@ class ChatViewController:
     override var canBecomeFirstResponder: Bool { return self.sendView != nil }
 
     override var inputAccessoryView: UIView {
-        get { return self.sendView! }
+        get { 
+        
+            // Find current height anchor.
+            let constraints = self.sendView!.constraints//.filter { $0.firstAttribute == .height }
+            NSLog("\(LOG_TAG) constraints: '\(constraints)'")
+            /*
+            if let constraint = constraints.first {
+                constraint.constant = height
+                NSLog("\(LOG_TAG) set height to tab bar")
+            }
+            */
+
+            return self.sendView!
+        }
     }
 
     // MARK: - KEYBOARD SCROLLING
