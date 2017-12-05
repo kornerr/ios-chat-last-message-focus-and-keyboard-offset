@@ -32,6 +32,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MO-WB-ebV">
                     <rect key="frame" x="8" y="34" width="32" height="32"/>
+                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="3aI-ez-DjC"/>
                         <constraint firstAttribute="width" secondItem="3MO-WB-ebV" secondAttribute="height" multiplier="1:1" id="3rJ-xY-V9Q"/>

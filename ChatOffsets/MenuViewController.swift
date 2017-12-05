@@ -81,7 +81,7 @@ class MenuViewController:
         let actionDoThis = UIAlertAction(title: "Do this", style: .default)
         let actionDoThat = UIAlertAction(title: "Do that", style: .default)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        var actions = [actionDoThis, actionDoThat, actionCancel]
+        let actions = [actionDoThis, actionDoThat, actionCancel]
         // Action sheet.
         let actionSheet =
             UIAlertController(
@@ -93,7 +93,7 @@ class MenuViewController:
             actionSheet.addAction(action)
         }
         // Display action sheet with options.
-        self.present(actionSheet, animated: true, completion: nil)
+        self.navigationController?.present(actionSheet, animated: true, completion: nil)
     }
 
 }

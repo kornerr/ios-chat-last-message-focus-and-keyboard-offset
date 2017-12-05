@@ -25,11 +25,9 @@ class ChatViewController:
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        NSLog("\(LOG_TAG) view did appear")
 
         self.setupKeyboardScrolling()
-        // Reload data and scroll to bottom.
-        // This fixes remaining offset issues.
-        self.tableView.reloadData()
         self.scrollToBottom(animated: false)
     }
     
@@ -227,19 +225,29 @@ class ChatViewController:
             if let view = self.sendView {
                 var inset = self.tableView.contentInset
                 inset.bottom = view.frame.size.height
-
                 // Compensate for iOS11+ adjusted bottom inset.
                 if #available(iOS 11, *) {
                     inset.bottom -= self.tableView.adjustedContentInset.bottom
                 }
-
                 self.tableView.contentInset = inset
             }
 
             self.scrollInsetter = ScrollInsetter(scrollView: self.tableView)
             self.scrollInsetter.scrolled = { [unowned self] in
-                self.scrollToBottom(animated: true)
+                //self.scrollToBottom(animated: true)
             }
+        }
+    }
+
+    private func disableOffsets() {
+        // Disable automatica offsets completely.
+        // iOS 11+.
+        if #available(iOS 11, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        }
+        // Older iOS.
+        else {
+            self.automaticallyAdjustsScrollViewInsets = false
         }
     }
 
