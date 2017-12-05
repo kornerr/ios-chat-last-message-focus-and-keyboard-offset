@@ -99,6 +99,7 @@ class Keyboard : NSObject {
     var heightChanged: KeyboardCallback? = nil
     
     @objc func keyboardWillHide(notification: Notification) {
+        NSLog("\(LOG_TAG) will hide")
         if (!self.isNotificationValid(notification)) {
             return
         }
@@ -110,6 +111,7 @@ class Keyboard : NSObject {
     }
 
     @objc func keyboardWillShow(notification: Notification) {
+        NSLog("\(LOG_TAG) will show")
         if (!self.isNotificationValid(notification)) {
             return
         }

@@ -39,6 +39,7 @@ class ChatViewController:
         self.addItemAfterDelay()
         self.setupSendView()
         self.setupOffsets()
+        self.setupKeyboard()
     }
 
     // MARK: - ITEMS
@@ -258,6 +259,14 @@ class ChatViewController:
         self.tableView.contentInset = inset
 
         self.automaticallyAdjustsScrollViewInsets = false
+    }
+
+    // MARK: - KEYBOARD
+
+    private var keyboard: Keyboard!
+
+    private func setupKeyboard() {
+        self.keyboard = Keyboard()
     }
 
 }
