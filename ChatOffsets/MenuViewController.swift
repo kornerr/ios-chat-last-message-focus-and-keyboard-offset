@@ -64,7 +64,8 @@ class MenuViewController:
         let height = self.tabBarController!.tabBar.frame.size.height
         let view = UIView(frame: CGRect(x:0, y: 0, width: 0, height: height + 20))
         view.embeddedView = self.sendView
-        chatVC.sendView = view
+        // TODO REMOVE send view as first responder
+        //chatVC.sendView = view
     }
 
     // MARK: - SEND VIEW FOR CHAT

@@ -221,16 +221,25 @@ class ChatViewController:
         if (self.scrollInsetter == nil) {
             NSLog("\(LOG_TAG) setupKeyboardScrolling")
 
+            /*
             // Set table view bottom inset to the height of send view.
             if let view = self.sendView {
                 var inset = self.tableView.contentInset
+
                 inset.bottom = view.frame.size.height
                 // Compensate for iOS11+ adjusted bottom inset.
                 if #available(iOS 11, *) {
                     inset.bottom -= self.tableView.adjustedContentInset.bottom
                 }
+
                 self.tableView.contentInset = inset
             }
+            */
+
+            // Set table view bottom inset to zero.
+            var inset = self.tableView.contentInset
+            inset.bottom = 0
+            self.tableView.contentInset = inset
 
             self.scrollInsetter = ScrollInsetter(scrollView: self.tableView)
             self.scrollInsetter.scrolled = { [unowned self] in
