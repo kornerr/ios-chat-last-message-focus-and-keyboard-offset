@@ -6,7 +6,8 @@ private let LOG_TAG = "MenuViewController"
 class MenuViewController:
     UIViewController,
     UITableViewDelegate,
-    UITableViewDataSource
+    UITableViewDataSource,
+    SendViewDelegate
 {
 
     // MARK: - SETUP
@@ -72,6 +73,27 @@ class MenuViewController:
 
     private func setupSendView() {
         self.sendView = UIView.loadFromNib()
+        self.sendView.delegate = self
+    }
+
+    func sendViewAttach() {
+        // Options.
+        let actionDoThis = UIAlertAction(title: "Do this", style: .default)
+        let actionDoThat = UIAlertAction(title: "Do that", style: .default)
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        var actions = [actionDoThis, actionDoThat, actionCancel]
+        // Action sheet.
+        let actionSheet =
+            UIAlertController(
+                title: "Select anything",
+                message: nil,
+                preferredStyle: .actionSheet
+            )
+        for action in actions {
+            actionSheet.addAction(action)
+        }
+        // Display action sheet with options.
+        self.present(actionSheet, animated: true, completion: nil)
     }
 
 }
