@@ -27,7 +27,7 @@ class ChatViewController:
         super.viewDidAppear(animated)
         NSLog("\(LOG_TAG) view did appear")
 
-        self.setupKeyboardScrolling()
+        //self.setupKeyboardScrolling()
         self.scrollToBottom(animated: false)
     }
     
@@ -37,6 +37,8 @@ class ChatViewController:
         self.setupItems()
         self.setupTableView()
         self.addItemAfterDelay()
+        self.setupSendView()
+        self.setupOffsets()
     }
 
     // MARK: - ITEMS
@@ -204,13 +206,13 @@ class ChatViewController:
     }
 
     // MARK: - SEND VIEW
+    
+    weak var sendView: UIView?
 
-    var sendView: UIView?
-
-    override var canBecomeFirstResponder: Bool { return self.sendView != nil }
-
-    override var inputAccessoryView: UIView {
-        get { return self.sendView! }
+    @IBOutlet private var sendContainerView: UIView!
+    
+    private func setupSendView() {
+        self.sendContainerView.embeddedView = self.sendView
     }
 
     // MARK: - KEYBOARD SCROLLING
@@ -249,16 +251,13 @@ class ChatViewController:
         }
     }
 
-    private func disableOffsets() {
-        // Disable automatica offsets completely.
-        // iOS 11+.
-        if #available(iOS 11, *) {
-            self.tableView.contentInsetAdjustmentBehavior = .never
-        }
-        // Older iOS.
-        else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+    private func setupOffsets() {
+        // Set table view bottom inset to zero.
+        var inset = self.tableView.contentInset
+        inset.bottom = 0
+        self.tableView.contentInset = inset
+
+        self.automaticallyAdjustsScrollViewInsets = false
     }
 
 }

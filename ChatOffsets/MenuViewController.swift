@@ -58,14 +58,8 @@ class MenuViewController:
         // Display chat.
         let chatVC = ChatViewController()
         self.show(chatVC, sender: self)
-
-        // Setup chat send (input) view.
-        // Make its height equal to tab bar's one + 20.
-        let height = self.tabBarController!.tabBar.frame.size.height
-        let view = UIView(frame: CGRect(x:0, y: 0, width: 0, height: height + 20))
-        view.embeddedView = self.sendView
-        // TODO REMOVE send view as first responder
-        //chatVC.sendView = view
+        // Attach send view.
+        chatVC.sendView = self.sendView
     }
 
     // MARK: - SEND VIEW FOR CHAT

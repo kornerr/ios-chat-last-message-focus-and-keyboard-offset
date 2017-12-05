@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="ChatOffsets" customModuleProvider="target">
             <connections>
+                <outlet property="sendContainerView" destination="fg3-Ht-fjO" id="m7M-j3-umF"/>
                 <outlet property="tableView" destination="kRP-me-Mbc" id="4jd-oP-BiM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,18 +22,28 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kRP-me-Mbc">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fg3-Ht-fjO">
+                    <rect key="frame" x="0.0" y="468" width="320" height="100"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="9ag-uV-fA4"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="fg3-Ht-fjO" secondAttribute="bottom" id="3An-bn-agR"/>
+                <constraint firstAttribute="trailing" secondItem="fg3-Ht-fjO" secondAttribute="trailing" id="Ckd-uf-vdI"/>
                 <constraint firstItem="kRP-me-Mbc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DZQ-jH-HLu"/>
-                <constraint firstAttribute="bottom" secondItem="kRP-me-Mbc" secondAttribute="bottom" id="Fjs-RK-ShL"/>
+                <constraint firstItem="fg3-Ht-fjO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EfY-Js-RXm"/>
                 <constraint firstAttribute="trailing" secondItem="kRP-me-Mbc" secondAttribute="trailing" id="KTz-UL-Bij"/>
                 <constraint firstItem="kRP-me-Mbc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nsY-Xr-2Ze"/>
+                <constraint firstItem="fg3-Ht-fjO" firstAttribute="top" secondItem="kRP-me-Mbc" secondAttribute="bottom" id="pVa-VJ-PcC"/>
             </constraints>
-            <point key="canvasLocation" x="24.5" y="51.5"/>
+            <point key="canvasLocation" x="24" y="51"/>
         </view>
     </objects>
 </document>
