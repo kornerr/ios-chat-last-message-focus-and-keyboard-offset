@@ -234,7 +234,8 @@ class ChatViewController:
 
             self.scrollInsetter = ScrollInsetter(scrollView: self.tableView)
             self.scrollInsetter.scrolled = { [unowned self] in
-                //self.scrollToBottom(animated: true)
+                NSLog("\(LOG_TAG) scroll to bottom after keyboard height changed")
+                self.scrollToBottom(animated: true)
             }
         }
     }
