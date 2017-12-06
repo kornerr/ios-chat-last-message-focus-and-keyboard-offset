@@ -57,6 +57,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="textField" destination="Jl5-O6-IY3" id="Mrl-e1-hi8"/>
+            </connections>
             <point key="canvasLocation" x="24" y="169"/>
         </view>
     </objects>

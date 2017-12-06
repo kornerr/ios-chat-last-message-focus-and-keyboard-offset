@@ -26,16 +26,13 @@ Here's a simplified hierarchy of most important parts of Chat VC:
     * UINavigationController
         * UIViewController
             * UITableView
-            * UIView, input view, VC's first responder
+            * SendView
 
-The application makes heavy use of the following classes/components present in External directory:
+The application makes use of the following classes/components in External directory:
 
 * Keyboard
     * Provides notifications of keyboard show/hide states
     * Provides keyboard height
-    * Filters invalid keyboard notifications out
-* ScrollInsetter
-    * Changes UITableView's contentInset based on keyboard visibility
 * TableViewCellTemplate
     * Provides an easy way to display any view inside UITableView's cell
 * UIView+Embed

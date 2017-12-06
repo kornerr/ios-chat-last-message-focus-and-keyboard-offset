@@ -25,9 +25,6 @@ class ChatViewController:
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NSLog("\(LOG_TAG) view did appear")
-
-        //self.setupKeyboardScrolling()
         self.scrollToBottom(animated: false)
     }
     
@@ -39,7 +36,7 @@ class ChatViewController:
         self.addItemAfterDelay()
         self.setupSendView()
         self.setupOffsets()
-        self.setupKeyboard()
+        self.setupKeyboardScrolling()
     }
 
     // MARK: - ITEMS
@@ -208,7 +205,7 @@ class ChatViewController:
 
     // MARK: - SEND VIEW
     
-    weak var sendView: UIView?
+    weak var sendView: SendView?
 
     @IBOutlet private var sendContainerView: UIView!
     
@@ -216,58 +213,62 @@ class ChatViewController:
         self.sendContainerView.embeddedView = self.sendView
     }
 
-    // MARK: - KEYBOARD SCROLLING
+    // MARK: - OFFSETS
 
-    private var scrollInsetter: ScrollInsetter!
-
-    private func setupKeyboardScrolling() {
-        if (self.scrollInsetter == nil) {
-            NSLog("\(LOG_TAG) setupKeyboardScrolling")
-
-            /*
-            // Set table view bottom inset to the height of send view.
-            if let view = self.sendView {
+    private func setupOffsets() {
+        // iOS 10 and iOS 11 have different offset calcuation algorithms.
+        // Do special magic for iOS 10.
+        if #available(iOS 11, *) {
+            // Do nothing.
+        }
+        else {
+            if let tabBar = self.tabBarController?.tabBar {
                 var inset = self.tableView.contentInset
-
-                inset.bottom = view.frame.size.height
-                // Compensate for iOS11+ adjusted bottom inset.
-                if #available(iOS 11, *) {
-                    inset.bottom -= self.tableView.adjustedContentInset.bottom
-                }
-
+                inset.bottom = -tabBar.frame.size.height
                 self.tableView.contentInset = inset
-            }
-            */
-
-            // Set table view bottom inset to zero.
-            var inset = self.tableView.contentInset
-            inset.bottom = 0
-            self.tableView.contentInset = inset
-
-            self.scrollInsetter = ScrollInsetter(scrollView: self.tableView)
-            self.scrollInsetter.scrolled = { [unowned self] in
-                NSLog("\(LOG_TAG) scroll to bottom after keyboard height changed")
-                self.scrollToBottom(animated: true)
             }
         }
     }
 
-    private func setupOffsets() {
-        // Set table view bottom inset to zero.
-        var inset = self.tableView.contentInset
-        inset.bottom = 0
-        self.tableView.contentInset = inset
-
-        self.automaticallyAdjustsScrollViewInsets = false
-    }
-
-    // MARK: - KEYBOARD
+    // MARK: - KEYBOARD SCROLLING
 
     private var keyboard: Keyboard!
+    @IBOutlet private var sendViewBottomConstraint: NSLayoutConstraint!
 
-    private func setupKeyboard() {
+    private func setupKeyboardScrolling() {
         self.keyboard = Keyboard()
+
+        // Lift/lower send view based on keyboard height.
+        let keyboardAnimation = { [unowned self] in
+            self.sendViewBottomConstraint.constant = self.keyboard.height
+            self.view.layoutIfNeeded()
+        }
+        // Scroll to bottom after animation.
+        let keyboardCompletion: (Bool) -> Void = { [unowned self] _ in
+            self.scrollToBottom(animated: true)
+        }
+
+        // React to keyboard height changes.
+        self.keyboard.heightChanged = {
+            UIView.animate(
+                withDuration: 0.2,
+                animations: keyboardAnimation,
+                completion: keyboardCompletion
+            )
+        }
+
+        // Hide keyboard on tap.
+        let tap =
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(self.hideKeyboard(_:))
+            )
+        self.tableView.addGestureRecognizer(tap)
     }
 
+    @objc func hideKeyboard(_ sender: UITapGestureRecognizer) {
+        self.sendView?.removeFocus()
+    }
+    
 }
 

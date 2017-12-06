@@ -51,31 +51,12 @@ class Keyboard : NSObject {
         NotificationCenter.default.removeObserver(self)
     }
 
-    // MARK: - NOTIFICATION VALIDITY
-
-    private func isNotificationValid(_ notification: Notification) -> Bool {
-        return true
-        // Detect invalid keyboard show/hide reports.
-        // Invalid ones have the same FrameBegin/FrameEnd values.
-        if
-            let frameBegin = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue,
-            let frameEnd = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue
-        {
-            return frameBegin.cgRectValue != frameEnd.cgRectValue
-        }
-        return false
-    }
-
     // MARK: - STATE
     
     var state = KeyboardState.None
     var stateChanged: KeyboardCallback? = nil
 
     @objc func keyboardDidHide(notification: Notification) {
-        if (!self.isNotificationValid(notification)) {
-            return
-        }
-
         self.state = .Hidden
         if let callback = self.stateChanged {
             callback()
@@ -83,10 +64,6 @@ class Keyboard : NSObject {
     }
 
     @objc func keyboardDidShow(notification: Notification) {
-        if (!self.isNotificationValid(notification)) {
-            return
-        }
-
         self.state = .Shown
         if let callback = self.stateChanged {
             callback()
@@ -100,11 +77,8 @@ class Keyboard : NSObject {
     
     @objc func keyboardWillHide(notification: Notification) {
         NSLog("\(LOG_TAG) will hide")
-        if (!self.isNotificationValid(notification)) {
-            return
-        }
-
         self.height = 0
+        NSLog("\(LOG_TAG) keyboard height: '\(height)'")
         if let callback = self.heightChanged {
             callback()
         }
@@ -112,18 +86,21 @@ class Keyboard : NSObject {
 
     @objc func keyboardWillShow(notification: Notification) {
         NSLog("\(LOG_TAG) will show")
-        if (!self.isNotificationValid(notification)) {
-            return
+        let frameEnd =
+            notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        self.height = frameEnd.cgRectValue.height
+        NSLog("\(LOG_TAG) keyboard height: '\(self.height)'")
+        if let callback = self.heightChanged {
+            callback()
         }
+    }
 
+    private func printFrame(_ notification: Notification) {
         let frameBegin =
             notification.userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue
         let frameEnd =
             notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-        self.height = frameBegin.cgRectValue.minY - frameEnd.cgRectValue.minY
-        if let callback = self.heightChanged {
-            callback()
-        }
+        NSLog("\(LOG_TAG) frame begin: '\(frameBegin)' frame end: '\(frameEnd)'")
     }
 
 }

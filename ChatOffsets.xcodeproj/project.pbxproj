@@ -27,7 +27,6 @@
 		9FDC05BA1FCC618600682487 /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FDC05B81FCC618600682487 /* SendView.xib */; };
 		9FDC05BD1FCC623E00682487 /* SendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05BC1FCC623D00682487 /* SendView.swift */; };
 		9FDC05BF1FCC69A500682487 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05BE1FCC69A400682487 /* Keyboard.swift */; };
-		9FDC05C11FCC6B5900682487 /* ScrollInsetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC05C01FCC6B5900682487 /* ScrollInsetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,7 +52,6 @@
 		9FDC05B81FCC618600682487 /* SendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendView.xib; sourceTree = "<group>"; };
 		9FDC05BC1FCC623D00682487 /* SendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendView.swift; sourceTree = "<group>"; };
 		9FDC05BE1FCC69A400682487 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		9FDC05C01FCC6B5900682487 /* ScrollInsetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollInsetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				9FDC05BE1FCC69A400682487 /* Keyboard.swift */,
-				9FDC05C01FCC6B5900682487 /* ScrollInsetter.swift */,
 				9FDC05AE1FCC28B400682487 /* TableViewCellTemplate.swift */,
 				9FDC05AD1FCC28B400682487 /* UIView+Embed.swift */,
 				9FDC05AC1FCC28B400682487 /* UIView+NibFile.swift */,
@@ -204,7 +201,6 @@
 				9FDC05BF1FCC69A500682487 /* Keyboard.swift in Sources */,
 				9FABF6531FCC1006000C80A7 /* MenuViewController.swift in Sources */,
 				9FDC05A11FCC1CF400682487 /* TextItem.swift in Sources */,
-				9FDC05C11FCC6B5900682487 /* ScrollInsetter.swift in Sources */,
 				9FDC05B71FCC4F0300682487 /* ImageItem.swift in Sources */,
 				9FDC05A91FCC226F00682487 /* ChatViewController.swift in Sources */,
 				9FDC05B01FCC28B400682487 /* UIView+Embed.swift in Sources */,
